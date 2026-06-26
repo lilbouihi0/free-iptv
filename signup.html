@@ -1,0 +1,1759 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPTV Premium Trial Signup | WhatsApp Verification</title>
+    <meta name="description" content="Sign up for your premium 24-hour IPTV free trial. Complete WhatsApp verification to receive high-speed Xtream server credentials instantly.">
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tabler Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+    
+    <style>
+        :root {
+            --glass-bg: rgba(13, 20, 38, 0.45);
+            --glass-border: rgba(255, 255, 255, 0.06);
+            --glow-light: rgba(99, 102, 241, 0.15);
+        }
+
+        body {
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+            justify-content: space-between;
+            background-color: #060913;
+            font-family: var(--font-body);
+            position: relative;
+        }
+
+        #signup-container {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex: 1;
+            padding: 80px 24px;
+            z-index: 10;
+        }
+
+        .signup-card {
+            width: 100%;
+            max-width: 580px;
+            background: var(--glass-bg);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border);
+            border-radius: 24px;
+            padding: 40px;
+            box-shadow: 0 20px 40px -15px rgba(0, 0, 0, 0.6), 0 0 50px 0 rgba(99, 102, 241, 0.05);
+            position: relative;
+            overflow: hidden;
+            transition: var(--transition);
+            flex-shrink: 0;
+            margin: 20px auto;
+        }
+
+        .signup-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 4px;
+            background: linear-gradient(90deg, var(--primary), var(--accent-cyan));
+        }
+
+        .signup-header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .signup-header .logo-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 12px;
+            display: inline-block;
+            filter: drop-shadow(0 0 10px rgba(99, 102, 241, 0.4));
+        }
+
+        .signup-header h2 {
+            font-family: var(--font-heading);
+            font-size: 1.8rem;
+            font-weight: 700;
+            margin-bottom: 8px;
+            background: linear-gradient(135deg, #ffffff 0%, #cbd5e1 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .signup-header p {
+            color: var(--text-muted);
+            font-size: 0.95rem;
+        }
+
+        /* Step Indicators */
+        .step-progress {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 35px;
+            position: relative;
+        }
+
+        .step-progress::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.05);
+            z-index: 1;
+            transform: translateY(-50%);
+        }
+
+        .progress-line-active {
+            position: absolute;
+            top: 50%;
+            left: 0;
+            height: 2px;
+            background: var(--primary);
+            z-index: 1;
+            transform: translateY(-50%);
+            transition: var(--transition);
+            width: 0%;
+        }
+
+        .step-node {
+            width: 36px;
+            height: 36px;
+            border-radius: 50%;
+            background: #0d1326;
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: var(--font-heading);
+            font-weight: 600;
+            font-size: 0.9rem;
+            color: var(--text-dim);
+            z-index: 2;
+            transition: var(--transition);
+        }
+
+        .step-node.active {
+            border-color: var(--primary);
+            color: #ffffff;
+            background: var(--primary);
+            box-shadow: 0 0 15px 0 rgba(99, 102, 241, 0.45);
+        }
+
+        .step-node.completed {
+            border-color: var(--accent-emerald);
+            color: #ffffff;
+            background: var(--accent-emerald);
+            box-shadow: 0 0 15px 0 rgba(16, 185, 129, 0.3);
+        }
+
+        /* Forms structure */
+        .step-content {
+            display: none;
+            animation: fadeIn 0.4s ease-out forwards;
+        }
+
+        .step-content.active {
+            display: block;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(10px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .form-group-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+            position: relative;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            color: var(--text-muted);
+        }
+
+        .input-wrapper {
+            position: relative;
+            display: flex;
+            align-items: center;
+        }
+
+        .input-wrapper i {
+            position: absolute;
+            left: 14px;
+            color: var(--text-dim);
+            font-size: 1.15rem;
+            transition: var(--transition);
+        }
+
+        .input-control {
+            width: 100%;
+            padding: 12px 14px 12px 42px;
+            background: var(--bg-input);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            color: var(--text-primary);
+            font-family: var(--font-body);
+            font-size: 0.95rem;
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .input-control:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px 0 rgba(99, 102, 241, 0.15);
+        }
+
+        .input-control:focus + i {
+            color: var(--primary);
+        }
+
+        /* Country Code and Phone Input */
+        .phone-wrapper {
+            display: flex;
+            gap: 10px;
+        }
+
+        .country-select {
+            width: 120px;
+            background: var(--bg-input);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            color: var(--text-primary);
+            padding: 0 12px;
+            font-family: var(--font-body);
+            font-size: 0.9rem;
+            outline: none;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .country-select:focus {
+            border-color: var(--primary);
+        }
+
+        .phone-input {
+            flex: 1;
+        }
+
+        .phone-input .input-control {
+            padding-left: 42px;
+        }
+
+        /* Password Wrapper Generator */
+        .password-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 8px;
+        }
+
+        .gen-pass-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-size: 0.78rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .gen-pass-btn:hover {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+        }
+
+        .password-toggle-icon {
+            position: absolute;
+            right: 14px;
+            cursor: pointer;
+            color: var(--text-dim);
+            transition: var(--transition);
+        }
+
+        .password-toggle-icon:hover {
+            color: var(--text-primary);
+        }
+
+        /* Alert / Error box */
+        .alert-box {
+            background: rgba(244, 63, 94, 0.1);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+            color: #fda4af;
+            border-radius: 12px;
+            padding: 12px 16px;
+            font-size: 0.88rem;
+            margin-bottom: 24px;
+            display: none;
+            align-items: flex-start;
+            gap: 10px;
+            animation: fadeIn 0.3s ease-out;
+        }
+
+        .alert-box i {
+            font-size: 1.2rem;
+            margin-top: 1px;
+            flex-shrink: 0;
+        }
+
+        /* Testing Bypass Indicator */
+        .bypass-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(6, 182, 212, 0.1);
+            border: 1px solid rgba(6, 182, 212, 0.25);
+            color: #8ae4f2;
+            padding: 10px 14px;
+            border-radius: 10px;
+            font-size: 0.82rem;
+            margin-bottom: 20px;
+            font-weight: 500;
+        }
+
+        /* OTP Code Input Boxes */
+        .otp-inputs {
+            display: flex;
+            justify-content: space-between;
+            gap: 10px;
+            margin: 25px 0;
+        }
+
+        .otp-digit {
+            width: 50px;
+            height: 58px;
+            background: var(--bg-input);
+            border: 1px solid rgba(255, 255, 255, 0.08);
+            border-radius: 12px;
+            text-align: center;
+            font-size: 1.6rem;
+            font-weight: 700;
+            color: #ffffff;
+            font-family: var(--font-heading);
+            outline: none;
+            transition: var(--transition);
+        }
+
+        .otp-digit:focus {
+            border-color: var(--primary);
+            box-shadow: 0 0 15px 0 rgba(99, 102, 241, 0.2);
+        }
+
+        .otp-timer {
+            text-align: center;
+            font-size: 0.88rem;
+            color: var(--text-muted);
+            margin-bottom: 25px;
+        }
+
+        .resend-btn {
+            background: none;
+            border: none;
+            color: var(--primary);
+            font-weight: 600;
+            cursor: pointer;
+            transition: var(--transition);
+        }
+
+        .resend-btn:disabled {
+            color: var(--text-dim);
+            cursor: not-allowed;
+            text-decoration: none;
+        }
+
+        .resend-btn:not(:disabled):hover {
+            color: var(--accent-cyan);
+            text-decoration: underline;
+        }
+
+        /* Buttons Styling matching premium landing theme */
+        .btn-full {
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 8px;
+            padding: 14px;
+            font-size: 1rem;
+            border-radius: 12px;
+            font-weight: 600;
+        }
+
+        .footer-text {
+            text-align: center;
+            color: var(--text-dim);
+            font-size: 0.82rem;
+            margin-top: 25px;
+        }
+
+        .footer-text a {
+            color: var(--text-muted);
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .footer-text a:hover {
+            color: var(--primary);
+            text-decoration: underline;
+        }
+
+        /* Loader inside Button */
+        .spinner {
+            display: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid rgba(255, 255, 255, 0.3);
+            border-top-color: #ffffff;
+            border-radius: 50%;
+            animation: spin 0.8s linear infinite;
+            margin-left: 8px;
+        }
+
+        @keyframes spin {
+            to { transform: rotate(360deg); }
+        }
+
+        /* Header Navigation adjustments for trial signup page */
+        #signup-header {
+            position: absolute;
+            width: 100%;
+        }
+
+        .back-home-link {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            color: var(--text-muted);
+            text-decoration: none;
+            font-size: 0.9rem;
+            transition: var(--transition);
+        }
+
+        .back-home-link:hover {
+            color: var(--text-primary);
+        }
+
+        /* ==================== NEW STEP STYLING ==================== */
+        .devices-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+            gap: 10px;
+            margin: 20px 0;
+            max-height: 280px;
+            overflow-y: auto;
+            padding-right: 4px;
+        }
+        .devices-grid::-webkit-scrollbar {
+            width: 4px;
+        }
+        .devices-grid::-webkit-scrollbar-thumb {
+            background: var(--border);
+            border-radius: 4px;
+        }
+
+        .device-btn {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 12px 8px;
+            cursor: pointer;
+            text-align: center;
+            transition: var(--transition);
+            color: var(--text-muted);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 4px;
+        }
+        .device-btn:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+            color: var(--text-primary);
+            transform: translateY(-2px);
+        }
+        .device-btn.selected {
+            border-color: var(--primary);
+            background: var(--primary-glow);
+            color: var(--text-primary);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
+        }
+        .device-btn .emoji {
+            font-size: 1.8rem;
+            display: block;
+            margin-bottom: 2px;
+            transition: transform 0.2s;
+        }
+        .device-btn:hover .emoji {
+            transform: scale(1.1);
+        }
+        .device-btn .name {
+            font-family: var(--font-heading);
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+        .device-btn .sub {
+            font-size: 0.65rem;
+            color: var(--text-dim);
+        }
+
+        .players-section {
+            margin-top: 25px;
+            border-top: 1px solid var(--border);
+            padding-top: 20px;
+        }
+        .players-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+            gap: 12px;
+            margin-top: 12px;
+        }
+        .player-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid var(--border);
+            border-radius: 16px;
+            padding: 16px;
+            cursor: pointer;
+            transition: var(--transition);
+            position: relative;
+        }
+        .player-card:hover {
+            border-color: var(--primary);
+            background: rgba(99, 102, 241, 0.05);
+            transform: translateY(-2px);
+        }
+        .player-card.selected {
+            border-color: var(--primary);
+            background: var(--primary-glow);
+            box-shadow: 0 0 15px rgba(99, 102, 241, 0.25);
+        }
+        .player-card .p-header {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            margin-bottom: 6px;
+        }
+        .player-card .p-icon {
+            font-size: 1.3rem;
+        }
+        .player-card .p-name {
+            font-family: var(--font-heading);
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .player-card .p-type {
+            font-size: 0.65rem;
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            color: var(--accent-cyan);
+            background: rgba(6, 182, 212, 0.1);
+            padding: 2px 6px;
+            border-radius: 4px;
+            margin-left: auto;
+            font-weight: 600;
+        }
+        .player-card .p-desc {
+            font-size: 0.78rem;
+            color: var(--text-muted);
+            line-height: 1.4;
+        }
+
+        /* Dashboard Step 4 Styles */
+        .dashboard-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 12px;
+            margin-bottom: 24px;
+        }
+        @media (min-width: 480px) {
+            .dashboard-grid {
+                grid-template-columns: repeat(4, 1fr);
+            }
+        }
+        .dash-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 16px 8px;
+            text-align: center;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            transition: var(--transition);
+        }
+        .dash-card .label {
+            font-size: 0.7rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 4px;
+            font-weight: 600;
+        }
+        .dash-card .value {
+            font-family: var(--font-heading);
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: var(--text-primary);
+            margin: 4px 0;
+        }
+        .dash-card .sub {
+            font-size: 0.72rem;
+            color: var(--text-muted);
+        }
+        .status-badge {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            font-weight: 700;
+        }
+        .status-badge.active {
+            background: rgba(16, 185, 129, 0.1);
+            color: var(--accent-emerald);
+            border: 1px solid rgba(16, 185, 129, 0.2);
+        }
+        .status-badge.expired {
+            background: rgba(244, 63, 94, 0.1);
+            color: var(--accent-rose);
+            border: 1px solid rgba(244, 63, 94, 0.2);
+        }
+
+        .credentials-card {
+            background: rgba(255, 255, 255, 0.02);
+            border: 1px solid rgba(255, 255, 255, 0.06);
+            border-radius: 16px;
+            padding: 24px;
+            margin-bottom: 24px;
+        }
+        .cred-item {
+            margin-bottom: 16px;
+        }
+        .cred-item:last-child {
+            margin-bottom: 0;
+        }
+        .cred-label {
+            font-size: 0.75rem;
+            color: var(--text-dim);
+            text-transform: uppercase;
+            letter-spacing: 0.05em;
+            margin-bottom: 6px;
+            font-weight: 600;
+        }
+        .cred-val-box {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #090e1c;
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 10px;
+            padding: 10px 14px;
+        }
+        .cred-value {
+            font-family: monospace;
+            font-size: 0.9rem;
+            color: var(--text-primary);
+            word-break: break-all;
+            margin-right: 10px;
+        }
+        .copy-btn {
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            padding: 4px;
+            border-radius: 4px;
+            transition: var(--transition);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .copy-btn:hover {
+            color: #ffffff;
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .copy-btn.copied {
+            color: var(--accent-emerald) !important;
+        }
+
+        .setup-instructions {
+            background: rgba(255, 255, 255, 0.01);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+            border-radius: 16px;
+            padding: 20px;
+            margin-top: 24px;
+        }
+        .setup-instructions h3 {
+            font-family: var(--font-heading);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 12px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .setup-instructions ol {
+            padding-left: 20px;
+        }
+        .setup-instructions li {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+            line-height: 1.5;
+        }
+        .setup-instructions li strong {
+            color: var(--text-primary);
+        }
+
+        .dashboard-actions {
+            margin-top: 25px;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 12px;
+        }
+
+        /* WhatsApp Button */
+        .btn-whatsapp {
+            background: #25D366;
+            border-color: #25D366;
+            color: #fff;
+            transition: var(--transition);
+        }
+        .btn-whatsapp:hover {
+            background: #1da851;
+            border-color: #1da851;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Neon Glow Background Elements -->
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- Navigation Header -->
+    <header id="signup-header">
+        <div class="nav-container">
+            <a href="index.html" class="logo">
+                <i class="ti ti-device-tv-old"></i>
+                <span>XC IPTV</span>
+            </a>
+            
+            <a href="index.html" class="back-home-link">
+                <i class="ti ti-arrow-left"></i> Back to Home
+            </a>
+        </div>
+    </header>
+
+    <!-- Main Registration Section -->
+    <main id="signup-container">
+        <div class="signup-card">
+            
+            <!-- Step Progress Indicators -->
+            <div class="step-progress">
+                <div class="progress-line-active" id="progress-line"></div>
+                <div class="step-node active" id="node-1" title="Account">1</div>
+                <div class="step-node" id="node-2" title="Choose Device">2</div>
+                <div class="step-node" id="node-3" title="Verify WhatsApp">3</div>
+                <div class="step-node" id="node-4" title="Dashboard"><i class="ti ti-check"></i></div>
+            </div>
+
+            <!-- Error Alerts Box -->
+            <div class="alert-box" id="error-alert">
+                <i class="ti ti-alert-circle"></i>
+                <span id="error-msg">An error occurred</span>
+            </div>
+
+            <!-- Developer OTP Testing Bypass Info -->
+            <div class="bypass-badge" id="bypass-info" style="display: none;">
+                <i class="ti ti-info-circle"></i>
+                <span><strong>Developer Bypass Mode:</strong> OTP sent to WhatsApp. Enter code: <strong id="bypass-otp-val">000000</strong></span>
+            </div>
+
+            <!-- ================= STEP 1: Account Details ================= -->
+            <div class="step-content active" id="step-1">
+                <div class="signup-header">
+                    <i class="ti ti-user-plus logo-icon"></i>
+                    <h2>Create Trial Account</h2>
+                    <p>Claim your premium 24h streaming trial in seconds.</p>
+                </div>
+
+                <form id="details-form" onsubmit="saveDetails(event)">
+                    <div class="form-group">
+                        <label for="full_name">Full Name</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="full_name" class="input-control" placeholder="John Doe" required autocomplete="name">
+                            <i class="ti ti-user"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="username">Portal Username</label>
+                        <div class="input-wrapper">
+                            <input type="text" id="username" class="input-control" placeholder="johndoe123" required autocomplete="username" pattern="^[a-zA-Z0-9_]{4,20}$" title="Username must be 4-20 alphanumeric characters or underscores.">
+                            <i class="ti ti-user-shield"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address</label>
+                        <div class="input-wrapper">
+                            <input type="email" id="email" class="input-control" placeholder="john@example.com" required autocomplete="email">
+                            <i class="ti ti-mail"></i>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">WhatsApp Phone Number</label>
+                        <div class="phone-wrapper">
+                            <select id="country_code" class="country-select">
+                                <option value="MA" data-prefix="212" selected>Morocco (+212)</option>
+                                <option value="FR" data-prefix="33">France (+33)</option>
+                                <option value="ES" data-prefix="34">Spain (+34)</option>
+                                <option value="GB" data-prefix="44">UK (+44)</option>
+                                <option value="US" data-prefix="1">USA (+1)</option>
+                                <option value="SA" data-prefix="966">Saudi Arabia (+966)</option>
+                                <option value="AE" data-prefix="971">UAE (+971)</option>
+                                <option value="DE" data-prefix="49">Germany (+49)</option>
+                                <option value="IT" data-prefix="39">Italy (+39)</option>
+                                <option value="NL" data-prefix="31">Netherlands (+31)</option>
+                                <option value="BE" data-prefix="32">Belgium (+32)</option>
+                                <option value="CA" data-prefix="1">Canada (+1)</option>
+                            </select>
+                            <div class="input-wrapper phone-input">
+                                <input type="tel" id="phone" class="input-control" placeholder="612345678" required autocomplete="tel">
+                                <i class="ti ti-brand-whatsapp"></i>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <div class="password-header">
+                            <label for="password">Password</label>
+                            <button type="button" class="gen-pass-btn" onclick="generateAndSetPassword()">Generate Secure Password</button>
+                        </div>
+                        <div class="input-wrapper">
+                            <input type="password" id="password" class="input-control" placeholder="••••••••••••" required autocomplete="new-password" minlength="6">
+                            <i class="ti ti-lock"></i>
+                            <i class="ti ti-eye password-toggle-icon" id="password-toggle" onclick="togglePasswordVisibility()"></i>
+                        </div>
+                    </div>
+
+                    <button type="submit" class="btn btn-primary btn-full" id="details-submit-btn">
+                        <span>Choose Device & App</span>
+                        <i class="ti ti-arrow-right" id="details-arrow"></i>
+                    </button>
+                </form>
+
+                <p class="footer-text">Already have a line? <a href="index.html" onclick="localStorage.setItem('open_login_modal', 'true')">Sign in instead</a></p>
+            </div>
+
+            <!-- ================= STEP 2: Device & Player Selection ================= -->
+            <div class="step-content" id="step-2">
+                <div class="signup-header">
+                    <i class="ti ti-devices logo-icon" style="color: var(--primary); filter: drop-shadow(0 0 10px rgba(99,102,241,0.3));"></i>
+                    <h2>Choose Your Device & App</h2>
+                    <p>Select your streaming device and preferred IPTV player.</p>
+                </div>
+
+                <div class="form-group">
+                    <label>SELECT YOUR DEVICE</label>
+                    <div class="devices-grid" id="devices-grid"></div>
+                </div>
+
+                <div class="players-section" id="players-section" style="display: none;">
+                    <label>RECOMMENDED IPTV PLAYERS</label>
+                    <div class="players-grid" id="players-grid"></div>
+                </div>
+
+                <div style="margin-top: 25px;">
+                    <button type="button" class="btn btn-primary btn-full" id="device-continue-btn" onclick="submitRegistrationAndRequestOtp()" disabled>
+                        <span>Continue to Verification</span>
+                        <div class="spinner" id="device-spinner"></div>
+                        <i class="ti ti-arrow-right" id="device-arrow"></i>
+                    </button>
+                    <p class="footer-text"><a href="#" onclick="goToStep(1)"><i class="ti ti-arrow-left"></i> Back to account details</a></p>
+                </div>
+            </div>
+
+            <!-- ================= STEP 3: WhatsApp OTP Verification ================= -->
+            <div class="step-content" id="step-3">
+                <div class="signup-header">
+                    <i class="ti ti-brand-whatsapp logo-icon" style="color: var(--accent-emerald); filter: drop-shadow(0 0 10px rgba(16,185,129,0.3));"></i>
+                    <h2>Verify Phone Number</h2>
+                    <p>Enter the 6-digit verification code sent to your WhatsApp number <strong id="verification-target-phone"></strong>.</p>
+                </div>
+
+                <!-- WhatsApp Support Button Fallback -->
+                <div style="text-align:center;margin-bottom:24px;">
+                    <p style="font-size:0.85rem;color:var(--text-muted);margin-bottom:12px;">
+                        Didn't receive the code? Send a message on WhatsApp:
+                    </p>
+                    <a href="https://wa.me/212784542581?text=TRIAL%20-%20freeiptv.space%20-%20Request%20Verification%20Code" 
+                       target="_blank" 
+                       class="btn btn-whatsapp" 
+                       style="padding:12px 28px;border-radius:12px;font-size:0.95rem;font-weight:600;display:inline-flex;align-items:center;gap:10px;text-decoration:none;">
+                        <i class="ti ti-brand-whatsapp" style="font-size:1.3rem;"></i>
+                        Send WhatsApp Message
+                    </a>
+                    <div style="font-size:0.75rem;color:var(--text-dim);margin-top:8px;">
+                        Our support team will send you a verification code within 2 minutes
+                    </div>
+                </div>
+
+                <div class="otp-inputs">
+                    <input type="text" maxlength="1" class="otp-digit" id="otp-1" oninput="handleOtpInput(this, 1)" onkeydown="handleOtpBackspace(this, event, 1)">
+                    <input type="text" maxlength="1" class="otp-digit" id="otp-2" oninput="handleOtpInput(this, 2)" onkeydown="handleOtpBackspace(this, event, 2)">
+                    <input type="text" maxlength="1" class="otp-digit" id="otp-3" oninput="handleOtpInput(this, 3)" onkeydown="handleOtpBackspace(this, event, 3)">
+                    <input type="text" maxlength="1" class="otp-digit" id="otp-4" oninput="handleOtpInput(this, 4)" onkeydown="handleOtpBackspace(this, event, 4)">
+                    <input type="text" maxlength="1" class="otp-digit" id="otp-5" oninput="handleOtpInput(this, 5)" onkeydown="handleOtpBackspace(this, event, 5)">
+                    <input type="text" maxlength="1" class="otp-digit" id="otp-6" oninput="handleOtpInput(this, 6)" onkeydown="handleOtpBackspace(this, event, 6)">
+                </div>
+
+                <div class="otp-timer">
+                    Didn't receive code? Resend in <span id="timer-val" style="font-weight: 600;">60</span>s
+                    <button class="resend-btn" id="resend-btn" onclick="resendOtpCode()" disabled style="display: none;">Resend Code</button>
+                </div>
+
+                <button type="button" class="btn btn-primary btn-full" id="verify-submit-btn" onclick="submitOtpCode()">
+                    <span>Verify & Activate Trial</span>
+                    <div class="spinner" id="verify-spinner"></div>
+                </button>
+
+                <p class="footer-text">
+                    <a href="#" onclick="goToStep(2)"><i class="ti ti-arrow-left"></i> Change device/app</a>
+                    &nbsp;&bull;&nbsp;
+                    <a href="#" onclick="goToStep(1)">Edit account details</a>
+                </p>
+            </div>
+
+            <!-- ================= STEP 4: Active Credentials Dashboard ================= -->
+            <div class="step-content" id="step-4">
+                <div class="success-animation">
+                    <div class="success-circle">
+                        <i class="ti ti-check"></i>
+                    </div>
+                </div>
+
+                <div class="signup-header" style="margin-bottom: 25px;">
+                    <h2>Trial Activated Successfully!</h2>
+                    <p>Your premium IPTV trial credentials are ready.</p>
+                </div>
+
+                <!-- Dashboard Quick Stats -->
+                <div class="dashboard-grid">
+                    <div class="dash-card">
+                        <span class="label">Status</span>
+                        <span class="status-badge active" id="dash-status-badge">Active</span>
+                    </div>
+                    <div class="dash-card">
+                        <span class="label">Duration</span>
+                        <span class="value" id="dash-time-val">24h 00m</span>
+                        <span class="sub" id="dash-expiry-sub">Expires soon</span>
+                    </div>
+                    <div class="dash-card">
+                        <span class="label">Device</span>
+                        <span class="value" id="dash-device-val">📺</span>
+                        <span class="sub" id="dash-device-sub">Device</span>
+                    </div>
+                    <div class="dash-card">
+                        <span class="label">IPTV Player</span>
+                        <span class="value" id="dash-player-val">🎬</span>
+                        <span class="sub" id="dash-player-sub">Player</span>
+                    </div>
+                </div>
+
+                <!-- Credentials Card -->
+                <div class="credentials-card">
+                    <div class="cred-item">
+                        <div class="cred-label">Xtream Server URL</div>
+                        <div class="cred-val-box">
+                            <span class="cred-value" id="dash-cred-server">Loading...</span>
+                            <button class="copy-btn" onclick="copyText('dash-cred-server', this)" title="Copy Server URL">
+                                <i class="ti ti-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="cred-item">
+                        <div class="cred-label">Xtream Username</div>
+                        <div class="cred-val-box">
+                            <span class="cred-value" id="dash-cred-username">Loading...</span>
+                            <button class="copy-btn" onclick="copyText('dash-cred-username', this)" title="Copy Username">
+                                <i class="ti ti-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="cred-item">
+                        <div class="cred-label">Xtream Password</div>
+                        <div class="cred-val-box">
+                            <span class="cred-value" id="dash-cred-password">Loading...</span>
+                            <button class="copy-btn" onclick="copyText('dash-cred-password', this)" title="Copy Password">
+                                <i class="ti ti-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="cred-item">
+                        <div class="cred-label">M3U Playlist URL</div>
+                        <div class="cred-val-box">
+                            <span class="cred-value" id="dash-cred-playlist" style="font-size: 0.8rem;">Loading...</span>
+                            <button class="copy-btn" onclick="copyText('dash-cred-playlist', this)" title="Copy Playlist URL">
+                                <i class="ti ti-copy"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Customized Setup Instructions -->
+                <div class="setup-instructions">
+                    <h3><i class="ti ti-book-open" style="color: var(--primary);"></i> How to Set Up</h3>
+                    <ol>
+                        <li>Open <strong id="setup-player-name">your IPTV app</strong> on your <strong id="setup-device-name">selected device</strong>.</li>
+                        <li>Choose <strong>"Login with Xtream Codes"</strong> or <strong>"Add M3U Playlist"</strong>.</li>
+                        <li>Copy the credentials details above and paste them into the respective fields.</li>
+                        <li>Start streaming high-quality IPTV channels & movie VODs! 🎬</li>
+                    </ol>
+                </div>
+
+                <!-- Dashboard Actions -->
+                <div class="dashboard-actions">
+                    <button class="btn btn-outline" onclick="resetAll()">
+                        <i class="ti ti-reload"></i> Start Over
+                    </button>
+                    <button class="btn btn-primary" onclick="goToDashboard()">
+                        <span>Access Dashboard</span>
+                        <i class="ti ti-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+
+        </div>
+    </main>
+
+    <!-- Footer Copyright -->
+    <footer style="padding: 24px; text-align: center; border-top: 1px solid rgba(255,255,255,0.03); background: rgba(6, 9, 19, 0.4); font-size: 0.85rem; color: var(--text-dim); z-index: 10;">
+        <p>&copy; 2026 XC IPTV. All rights reserved. Premium streams powered by XC_VM panel.</p>
+    </footer>
+
+    <!-- Form Javascript Logic -->
+    <script>
+        // ============================================
+        // DEVICES & PLAYERS DATA LISTS
+        // ============================================
+        const devices = [
+            { id: 'firestick', name: 'Fire TV / Stick', emoji: '🔥', sub: 'Amazon' },
+            { id: 'android_tv', name: 'Android TV', emoji: '📺', sub: 'Google TV' },
+            { id: 'android_box', name: 'Android Box', emoji: '📦', sub: 'Nvidia Shield' },
+            { id: 'apple_tv', name: 'Apple TV', emoji: '🍎', sub: 'tvOS' },
+            { id: 'iphone', name: 'iPhone / iPad', emoji: '📱', sub: 'iOS' },
+            { id: 'android_phone', name: 'Android Phone', emoji: '🤖', sub: 'Mobile' },
+            { id: 'windows', name: 'Windows PC', emoji: '🖥️', sub: 'Desktop' },
+            { id: 'mac', name: 'Mac / macOS', emoji: '💻', sub: 'Desktop' },
+            { id: 'linux', name: 'Linux', emoji: '🐧', sub: 'Desktop' },
+            { id: 'smart_tv', name: 'Samsung TV', emoji: '📡', sub: 'Tizen' },
+            { id: 'lg_tv', name: 'LG TV', emoji: '🌐', sub: 'webOS' },
+            { id: 'roku', name: 'Roku', emoji: '🟣', sub: 'Streaming' },
+            { id: 'chromecast', name: 'Chromecast', emoji: '📶', sub: 'Google TV' },
+            { id: 'stb', name: 'MAG Box', emoji: '📻', sub: 'Set-top' },
+            { id: 'formuler', name: 'Formuler', emoji: '🎛️', sub: 'Android' },
+            { id: 'kodi', name: 'Kodi Device', emoji: '🎮', sub: 'Any platform' },
+        ];
+
+        const players = {
+            firestick: [
+                { name: 'TiviMate', type: 'freemium', icon: '🎬', desc: 'Best IPTV player for Firestick. Clean EPG, multi-screen.' },
+                { name: 'IPTV Smarters Pro', type: 'free', icon: '📺', desc: 'Full-featured, Xtream Codes & M3U support.' },
+                { name: 'Downloader + VLC', type: 'free', icon: '▶️', desc: 'Sideload VLC via Downloader app.' },
+                { name: 'Kodi', type: 'free', icon: '🔴', desc: 'Install via Downloader. PVR IPTV Simple Client.' },
+            ],
+            android_tv: [
+                { name: 'TiviMate', type: 'freemium', icon: '🎬', desc: 'The gold standard. Premium unlocks multi-screen.' },
+                { name: 'IPTV Smarters Pro', type: 'free', icon: '📺', desc: 'Xtream Codes login, EPG, catch-up.' },
+                { name: 'Kodi', type: 'free', icon: '🔴', desc: 'Open source. Use PVR IPTV Simple Client.' },
+                { name: 'Televizo', type: 'freemium', icon: '📡', desc: 'Sleek UI optimized for TV.' },
+            ],
+            android_box: [
+                { name: 'TiviMate', type: 'freemium', icon: '🎬', desc: 'Best overall. Premium for multi-screen.' },
+                { name: 'IPTV Smarters Pro', type: 'free', icon: '📺', desc: 'Login with Xtream Codes directly.' },
+                { name: 'OTT Navigator', type: 'freemium', icon: '🗺️', desc: 'Feature-rich with EPG and catch-up.' },
+                { name: 'Kodi', type: 'free', icon: '🔴', desc: 'Install PVR IPTV Simple Client.' },
+                { name: 'VLC', type: 'free', icon: '🟠', desc: 'Open-source player, supports M3U.' },
+            ],
+            apple_tv: [
+                { name: 'IPTV Smarters Pro', type: 'free', icon: '📺', desc: 'Available on tvOS. Xtream Codes + M3U.' },
+                { name: 'GSE Smart IPTV', type: 'freemium', icon: '📡', desc: 'Full-featured, M3U, EPG, multi-format.' },
+                { name: 'Infuse 7', type: 'freemium', icon: '🎞️', desc: 'Premium video player. HLS/M3U streams.' },
+                { name: 'VLC', type: 'free', icon: '🟠', desc: 'Free, open-source. Add M3U from URL.' },
+            ],
+            iphone: [
+                { name: 'GSE Smart IPTV', type: 'freemium', icon: '📡', desc: 'Top iOS IPTV app. M3U, Xtream Codes.' },
+                { name: 'IPTV Smarters Pro', type: 'free', icon: '📺', desc: 'Free Xtream Codes + M3U support.' },
+                { name: 'Flex IPTV', type: 'paid', icon: '🎯', desc: 'Polished native iOS UI, EPG, favorites.' },
+                { name: 'VLC', type: 'free', icon: '🟠', desc: 'Free and open source. Open M3U streams.' },
+            ],
+            android_phone: [
+                { name: 'IPTV Smarters Pro', type: 'free', icon: '📺', desc: 'Best free Android IPTV app.' },
+                { name: 'TiviMate', type: 'freemium', icon: '🎬', desc: 'Also works on phones with premium.' },
+                { name: 'VLC', type: 'free', icon: '🟠', desc: 'Free open-source. Add M3U from network.' },
+                { name: 'Televizo', type: 'freemium', icon: '📡', desc: 'Sleek modern UI, M3U and Xtream.' },
+                { name: 'Kodi', type: 'free', icon: '🔴', desc: 'Media center with IPTV add-on.' },
+            ],
+            windows: [
+                { name: 'VLC Media Player', type: 'free', icon: '🟠', desc: 'Free, open-source. Open M3U via Network Stream.' },
+                { name: 'Kodi', type: 'free', icon: '🔴', desc: 'Full media center. PVR IPTV Simple Client.' },
+                { name: 'MyIPTV Player', type: 'free', icon: '📺', desc: 'Windows-native. M3U + Xtream Codes.' },
+                { name: 'Pot Player', type: 'free', icon: '▶️', desc: 'Powerful free player. Supports IPTV.' },
+            ],
+            mac: [
+                { name: 'VLC Media Player', type: 'free', icon: '🟠', desc: 'Free, open-source. Open M3U from Media menu.' },
+                { name: 'Kodi', type: 'free', icon: '🔴', desc: 'Media center on macOS. PVR IPTV add-on.' },
+                { name: 'IINA', type: 'free', icon: '▶️', desc: 'macOS-native. Beautiful UI. Open M3U from URL.' },
+                { name: 'Infuse 7', type: 'freemium', icon: '🎞️', desc: 'Premium Mac player with HLS/M3U.' },
+            ],
+            linux: [
+                { name: 'VLC Media Player', type: 'free', icon: '🟠', desc: 'Install via apt/snap. Open M3U from network.' },
+                { name: 'Kodi', type: 'free', icon: '🔴', desc: 'Full media center. PPA available.' },
+                { name: 'MPV', type: 'free', icon: '▶️', desc: 'Lightweight. Run: mpv playlist.m3u' },
+                { name: 'Hypnotix', type: 'free', icon: '📺', desc: 'Linux Mint IPTV player. GUI-based.' },
+            ],
+            smart_tv: [
+                { name: 'Smart IPTV (SIPTV)', type: 'paid', icon: '📺', desc: 'Most popular Samsung Tizen IPTV app.' },
+                { name: 'SSIPTV', type: 'free', icon: '📡', desc: 'Free Samsung Tizen IPTV player.' },
+            ],
+            lg_tv: [
+                { name: 'Smart IPTV (SIPTV)', type: 'paid', icon: '📺', desc: 'Available on webOS. Most popular LG IPTV app.' },
+                { name: 'SSIPTV', type: 'free', icon: '📡', desc: 'Free IPTV player for LG webOS TVs.' },
+            ],
+            roku: [
+                { name: 'Plex', type: 'free', icon: '🎞️', desc: 'Stream live TV via Plex (requires Plex Pass).' },
+                { name: '⚠️ Limited Support', type: 'free', icon: '⚠️', desc: 'Roku has very limited native IPTV support.' },
+            ],
+            chromecast: [
+                { name: 'TiviMate', type: 'freemium', icon: '🎬', desc: 'Best IPTV on Chromecast with Google TV.' },
+                { name: 'IPTV Smarters Pro', type: 'free', icon: '📺', desc: 'Login with Xtream Codes. Full EPG.' },
+                { name: 'OTT Navigator', type: 'freemium', icon: '🗺️', desc: 'Feature-rich with EPG and catch-up.' },
+                { name: 'Kodi', type: 'free', icon: '🔴', desc: 'Install via Play Store. PVR IPTV add-on.' },
+            ],
+            stb: [
+                { name: 'Built-in Portal', type: 'free', icon: '📡', desc: 'No extra app needed. Enter portal URL in settings.' },
+                { name: 'ℹ️ How it works', type: 'free', icon: 'ℹ️', desc: 'MAG boxes connect using portal URL + MAC address.' },
+            ],
+            formuler: [
+                { name: 'myTV Online 3', type: 'free', icon: '📺', desc: 'Pre-installed on all Formuler boxes.' },
+                { name: 'TiviMate', type: 'freemium', icon: '🎬', desc: 'Install from Play Store. Works great.' },
+                { name: 'IPTV Smarters Pro', type: 'free', icon: '📺', desc: 'Xtream Codes login. Available on Play Store.' },
+            ],
+            kodi: [
+                { name: 'PVR IPTV Simple Client', type: 'free', icon: '🎯', desc: 'Official Kodi IPTV add-on. Paste M3U URL.' },
+                { name: 'Catch-up TV & More', type: 'free', icon: '📺', desc: 'Kodi add-on for catch-up support.' },
+                { name: 'Emby for Kodi', type: 'freemium', icon: '🎬', desc: 'Use Emby server to manage IPTV.' },
+            ],
+        };
+
+        // ============================================
+        // STATE MODEL
+        // ============================================
+        let currentStep = 1;
+        let resendTimer = null;
+        let timeLeft = 60;
+        
+        let state = {
+            fullName: '',
+            username: '',
+            email: '',
+            phone: '',
+            country: '',
+            password: '',
+            selectedDevice: '',
+            selectedPlayer: '',
+            credentials: null
+        };
+
+        // Initialize elements and select boxes
+        document.addEventListener('DOMContentLoaded', () => {
+            initDeviceSelection();
+        });
+
+        // Toggle password visibility
+        function togglePasswordVisibility() {
+            const passField = document.getElementById('password');
+            const toggleIcon = document.getElementById('password-toggle');
+            if (passField.type === 'password') {
+                passField.type = 'text';
+                toggleIcon.className = 'ti ti-eye-off password-toggle-icon';
+            } else {
+                passField.type = 'password';
+                toggleIcon.className = 'ti ti-eye password-toggle-icon';
+            }
+        }
+
+        // Generate dynamic secure passwords
+        function generateAndSetPassword() {
+            const length = 12;
+            const chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$';
+            let password = '';
+            for (let i = 0; i < length; i++) {
+                password += chars.charAt(Math.floor(Math.random() * chars.length));
+            }
+            const passField = document.getElementById('password');
+            passField.value = password;
+            passField.type = 'text';
+            setTimeout(() => {
+                passField.type = 'password';
+            }, 5000);
+            
+            // Highlight password field briefly
+            passField.style.borderColor = 'var(--primary)';
+            setTimeout(() => {
+                passField.style.borderColor = 'rgba(255, 255, 255, 0.08)';
+            }, 1000);
+        }
+
+        // Step Navigation
+        function goToStep(step) {
+            // Hide alert
+            document.getElementById('error-alert').style.display = 'none';
+
+            // Reset step elements
+            document.querySelectorAll('.step-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.step-node').forEach(el => el.classList.remove('active', 'completed'));
+            
+            currentStep = step;
+            document.getElementById(`step-${step}`).classList.add('active');
+
+            // Line adjustments
+            const progressLine = document.getElementById('progress-line');
+            if (step === 1) {
+                progressLine.style.width = '0%';
+                document.getElementById('node-1').classList.add('active');
+            } else if (step === 2) {
+                progressLine.style.width = '33%';
+                document.getElementById('node-1').classList.add('completed');
+                document.getElementById('node-2').classList.add('active');
+            } else if (step === 3) {
+                progressLine.style.width = '66%';
+                document.getElementById('node-1').classList.add('completed');
+                document.getElementById('node-2').classList.add('completed');
+                document.getElementById('node-3').classList.add('active');
+                
+                // Focus first digit
+                setTimeout(() => {
+                    const firstOtp = document.getElementById('otp-1');
+                    if (firstOtp) firstOtp.focus();
+                }, 150);
+            } else if (step === 4) {
+                progressLine.style.width = '100%';
+                document.getElementById('node-1').classList.add('completed');
+                document.getElementById('node-2').classList.add('completed');
+                document.getElementById('node-3').classList.add('completed');
+                document.getElementById('node-4').classList.add('active');
+            }
+        }
+
+        // ============================================
+        // STEP 1: Account details form submit
+        // ============================================
+        function saveDetails(e) {
+            e.preventDefault();
+            
+            // Gather inputs
+            state.fullName = document.getElementById('full_name').value.trim();
+            state.username = document.getElementById('username').value.trim();
+            state.email = document.getElementById('email').value.trim();
+            
+            const countrySelect = document.getElementById('country_code');
+            const prefix = countrySelect.options[countrySelect.selectedIndex].getAttribute('data-prefix');
+            state.country = countrySelect.value;
+            
+            let rawPhone = document.getElementById('phone').value.trim();
+            if (rawPhone.startsWith('0')) {
+                rawPhone = rawPhone.substring(1);
+            }
+            rawPhone = rawPhone.replace(/[^0-9]/g, '');
+            state.phone = `+${prefix}${rawPhone}`;
+            
+            state.password = document.getElementById('password').value;
+            
+            goToStep(2);
+        }
+
+        // ============================================
+        // STEP 2: Device Selection Logic
+        // ============================================
+        function initDeviceSelection() {
+            const grid = document.getElementById('devices-grid');
+            if (!grid) return;
+            grid.innerHTML = '';
+            
+            devices.forEach(d => {
+                const btn = document.createElement('button');
+                btn.type = 'button';
+                btn.className = 'device-btn';
+                btn.dataset.id = d.id;
+                btn.innerHTML = `
+                    <span class="emoji">${d.emoji}</span>
+                    <span class="name">${d.name}</span>
+                    <span class="sub">${d.sub}</span>
+                `;
+                btn.onclick = () => selectDevice(d.id);
+                grid.appendChild(btn);
+            });
+        }
+
+        function selectDevice(deviceId) {
+            state.selectedDevice = deviceId;
+            state.selectedPlayer = ''; // reset player choice
+            
+            // Toggle highlight
+            document.querySelectorAll('.device-btn').forEach(btn => {
+                if (btn.dataset.id === deviceId) {
+                    btn.classList.add('selected');
+                } else {
+                    btn.classList.remove('selected');
+                }
+            });
+            
+            // Load recommended players
+            const section = document.getElementById('players-section');
+            const grid = document.getElementById('players-grid');
+            grid.innerHTML = '';
+            
+            const list = players[deviceId] || [];
+            if (list.length > 0) {
+                list.forEach(p => {
+                    const card = document.createElement('div');
+                    card.className = 'player-card';
+                    card.innerHTML = `
+                        <div class="p-header">
+                            <span class="p-icon">${p.icon}</span>
+                            <span class="p-name">${p.name}</span>
+                            <span class="p-type">${p.type}</span>
+                        </div>
+                        <div class="p-desc">${p.desc}</div>
+                    `;
+                    card.onclick = () => selectPlayer(p.name);
+                    grid.appendChild(card);
+                });
+                section.style.display = 'block';
+            } else {
+                section.style.display = 'none';
+            }
+            
+            // Disable button until player is selected
+            document.getElementById('device-continue-btn').disabled = true;
+        }
+
+        function selectPlayer(playerName) {
+            state.selectedPlayer = playerName;
+            
+            // Toggle highlight
+            document.querySelectorAll('.player-card').forEach(card => {
+                const nameEl = card.querySelector('.p-name');
+                if (nameEl && nameEl.textContent === playerName) {
+                    card.classList.add('selected');
+                } else {
+                    card.classList.remove('selected');
+                }
+            });
+            
+            // Enable button
+            document.getElementById('device-continue-btn').disabled = false;
+        }
+
+        // ============================================
+        // STEP 2 CONTINUE: Call Register User API
+        // ============================================
+        function submitRegistrationAndRequestOtp() {
+            const submitBtn = document.getElementById('device-continue-btn');
+            const spinner = document.getElementById('device-spinner');
+            const arrow = document.getElementById('device-arrow');
+            const alertBox = document.getElementById('error-alert');
+            const bypassBox = document.getElementById('bypass-info');
+
+            // Hide alert & bypass banner
+            alertBox.style.display = 'none';
+            bypassBox.style.display = 'none';
+
+            // Loading state
+            submitBtn.disabled = true;
+            spinner.style.display = 'inline-block';
+            arrow.style.display = 'none';
+
+            const formData = new FormData();
+            formData.append('action', 'register_user');
+            formData.append('full_name', state.fullName);
+            formData.append('username', state.username);
+            formData.append('email', state.email);
+            formData.append('phone_number', state.phone);
+            formData.append('phone_country', state.country);
+            formData.append('password', state.password);
+
+            fetch('api/ajax.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                submitBtn.disabled = false;
+                spinner.style.display = 'none';
+                arrow.style.display = 'inline-block';
+
+                if (data.success) {
+                    document.getElementById('verification-target-phone').textContent = state.phone;
+                    goToStep(3);
+                    startResendTimer();
+                    
+                    if (data.otp) {
+                        bypassBox.style.display = 'flex';
+                        document.getElementById('bypass-otp-val').textContent = data.otp;
+                    }
+                } else {
+                    // Navigate back to Details Step so they can adjust fields if eligibility fails
+                    goToStep(1);
+                    showAlert(data.message || 'Registration check failed.');
+                }
+            })
+            .catch(err => {
+                submitBtn.disabled = false;
+                spinner.style.display = 'none';
+                arrow.style.display = 'inline-block';
+                goToStep(1);
+                showAlert('Network error. Please try again.');
+                console.error(err);
+            });
+        }
+
+        // ============================================
+        // STEP 3: OTP inputs autofocus navigation
+        // ============================================
+        function handleOtpInput(element, index) {
+            element.value = element.value.replace(/[^0-9]/g, '');
+            if (element.value.length === 1 && index < 6) {
+                document.getElementById(`otp-${index + 1}`).focus();
+            }
+            checkOtpCompleted();
+        }
+
+        function handleOtpBackspace(element, event, index) {
+            if (event.key === 'Backspace' && element.value.length === 0 && index > 1) {
+                document.getElementById(`otp-${index - 1}`).focus();
+            }
+        }
+
+        function getFullOtp() {
+            let code = '';
+            for (let i = 1; i <= 6; i++) {
+                code += document.getElementById(`otp-${i}`).value;
+            }
+            return code;
+        }
+
+        function checkOtpCompleted() {
+            const code = getFullOtp();
+            if (code.length === 6) {
+                submitOtpCode();
+            }
+        }
+
+        // Timer control
+        function startResendTimer() {
+            timeLeft = 60;
+            const timerSpan = document.getElementById('timer-val');
+            const resendBtn = document.getElementById('resend-btn');
+            
+            resendBtn.style.display = 'none';
+            document.querySelector('.otp-timer').style.display = 'block';
+            timerSpan.textContent = timeLeft;
+
+            if (resendTimer) clearInterval(resendTimer);
+
+            resendTimer = setInterval(() => {
+                timeLeft--;
+                timerSpan.textContent = timeLeft;
+                if (timeLeft <= 0) {
+                    clearInterval(resendTimer);
+                    resendBtn.style.display = 'inline-block';
+                    resendBtn.disabled = false;
+                    document.querySelector('.otp-timer').style.display = 'none';
+                }
+            }, 1000);
+        }
+
+        // Submit OTP Code
+        function submitOtpCode() {
+            const code = getFullOtp();
+            if (code.length !== 6) return;
+
+            const submitBtn = document.getElementById('verify-submit-btn');
+            const spinner = document.getElementById('verify-spinner');
+            const alertBox = document.getElementById('error-alert');
+
+            alertBox.style.display = 'none';
+            submitBtn.disabled = true;
+            spinner.style.display = 'inline-block';
+
+            const formData = new FormData();
+            formData.append('action', 'verify_phone');
+            formData.append('otp_code', code);
+
+            fetch('api/ajax.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                submitBtn.disabled = false;
+                spinner.style.display = 'none';
+
+                if (data.success) {
+                    // Save credentials details in state
+                    state.credentials = data.data;
+                    
+                    // Hide bypass info if displayed
+                    document.getElementById('bypass-info').style.display = 'none';
+                    
+                    // Setup Step 4 Dashboard details
+                    initDashboard();
+                    
+                    // Transition to step 4
+                    goToStep(4);
+                } else {
+                    showAlert(data.message || 'OTP verification failed.');
+                    clearOtpDigits();
+                }
+            })
+            .catch(err => {
+                submitBtn.disabled = false;
+                spinner.style.display = 'none';
+                showAlert('Network error. Please try again.');
+                console.error(err);
+            });
+        }
+
+        // Resend OTP Code
+        function resendOtpCode() {
+            const resendBtn = document.getElementById('resend-btn');
+            const bypassBox = document.getElementById('bypass-info');
+            resendBtn.disabled = true;
+
+            const formData = new FormData();
+            formData.append('action', 'resend_otp');
+
+            fetch('api/ajax.php', {
+                method: 'POST',
+                body: formData
+            })
+            .then(res => res.json())
+            .then(data => {
+                if (data.success) {
+                    startResendTimer();
+                    clearOtpDigits();
+                    showAlert('A new OTP has been sent.', 'success');
+                    
+                    if (data.otp) {
+                        bypassBox.style.display = 'flex';
+                        document.getElementById('bypass-otp-val').textContent = data.otp;
+                    }
+                } else {
+                    resendBtn.disabled = false;
+                    showAlert(data.message || 'Failed to resend OTP.');
+                }
+            })
+            .catch(err => {
+                resendBtn.disabled = false;
+                showAlert('Network error. Please try again.');
+                console.error(err);
+            });
+        }
+
+        // ============================================
+        // STEP 4: Credentials Dashboard rendering
+        // ============================================
+        function initDashboard() {
+            if (!state.credentials) return;
+
+            // 1. Set copyable text fields
+            document.getElementById('dash-cred-server').textContent = state.credentials.server_url;
+            document.getElementById('dash-cred-username').textContent = state.credentials.username;
+            document.getElementById('dash-cred-password').textContent = state.credentials.password;
+            document.getElementById('dash-cred-playlist').textContent = state.credentials.playlist_url;
+
+            // 2. Set Device info display card
+            const deviceObj = devices.find(d => d.id === state.selectedDevice);
+            if (deviceObj) {
+                document.getElementById('dash-device-val').textContent = deviceObj.emoji;
+                document.getElementById('dash-device-sub').textContent = deviceObj.name;
+            }
+
+            // 3. Set Player app info display card
+            const playerList = players[state.selectedDevice] || [];
+            const playerObj = playerList.find(p => p.name === state.selectedPlayer);
+            if (playerObj) {
+                document.getElementById('dash-player-val').textContent = playerObj.icon;
+                document.getElementById('dash-player-sub').textContent = playerObj.name;
+            }
+
+            // 4. Set Status badge and countdown timer (24h)
+            document.getElementById('dash-status-badge').className = 'status-badge active';
+            document.getElementById('dash-status-badge').textContent = 'Active';
+            document.getElementById('dash-expiry-sub').textContent = 'Expires in 24 hours';
+
+            let seconds = 86400; // 24 hours
+            const countdownSpan = document.getElementById('dash-time-val');
+            countdownSpan.textContent = "24h 00m";
+
+            if (window.countdownInterval) clearInterval(window.countdownInterval);
+
+            window.countdownInterval = setInterval(() => {
+                seconds--;
+                if (seconds > 0) {
+                    const hours = Math.floor(seconds / 3600);
+                    const mins = Math.floor((seconds % 3600) / 60);
+                    countdownSpan.textContent = `${hours}h ${mins}m`;
+                } else {
+                    countdownSpan.textContent = 'Expired';
+                    document.getElementById('dash-status-badge').className = 'status-badge expired';
+                    document.getElementById('dash-status-badge').textContent = 'Expired';
+                    clearInterval(window.countdownInterval);
+                }
+            }, 1000);
+
+            // 5. Update setup instruction text variables
+            document.getElementById('setup-player-name').textContent = state.selectedPlayer || 'your IPTV app';
+            document.getElementById('setup-device-name').textContent = deviceObj ? deviceObj.name : 'your device';
+        }
+
+        // ============================================
+        // UTILITIES
+        // ============================================
+
+        // Helper: show alert messages
+        function showAlert(msg, type = 'error') {
+            const alertBox = document.getElementById('error-alert');
+            const alertMsg = document.getElementById('error-msg');
+            
+            alertMsg.textContent = msg;
+            alertBox.style.display = 'flex';
+            
+            if (type === 'success') {
+                alertBox.style.background = 'rgba(16, 185, 129, 0.1)';
+                alertBox.style.borderColor = 'rgba(16, 185, 129, 0.25)';
+                alertBox.style.color = '#a7f3d0';
+                alertBox.querySelector('i').className = 'ti ti-circle-check';
+            } else {
+                alertBox.style.background = 'rgba(244, 63, 94, 0.1)';
+                alertBox.style.borderColor = 'rgba(244, 63, 94, 0.2)';
+                alertBox.style.color = '#fda4af';
+                alertBox.querySelector('i').className = 'ti ti-alert-circle';
+            }
+        }
+
+        // Clear OTP Digits on mismatch
+        function clearOtpDigits() {
+            for (let i = 1; i <= 6; i++) {
+                document.getElementById(`otp-${i}`).value = '';
+            }
+            const firstOtp = document.getElementById('otp-1');
+            if (firstOtp) firstOtp.focus();
+        }
+
+        // Copy Text utility
+        function copyText(elementId, btnElement) {
+            const copyVal = document.getElementById(elementId).textContent;
+            navigator.clipboard.writeText(copyVal).then(() => {
+                // visual confirmation
+                const originalIcon = btnElement.innerHTML;
+                btnElement.innerHTML = '<i class="ti ti-check"></i>';
+                btnElement.classList.add('copied');
+                
+                setTimeout(() => {
+                    btnElement.innerHTML = originalIcon;
+                    btnElement.classList.remove('copied');
+                }, 2000);
+            }).catch(err => {
+                console.error('Copy failed: ', err);
+            });
+        }
+
+        // Redirect to main panel dashboard portal
+        function goToDashboard() {
+            window.location.href = 'index.html#portal';
+        }
+
+        // Reset All and Start Over
+        function resetAll() {
+            // Terminate backend login session
+            fetch('api/ajax.php?action=logout')
+            .then(() => {
+                // Clear state
+                state = {
+                    fullName: '',
+                    username: '',
+                    email: '',
+                    phone: '',
+                    country: '',
+                    password: '',
+                    selectedDevice: '',
+                    selectedPlayer: '',
+                    credentials: null
+                };
+                
+                // Clear fields in Step 1
+                document.getElementById('details-form').reset();
+                
+                // Clear OTP digits
+                clearOtpDigits();
+                
+                // Clear Device Selection grids highlights
+                document.querySelectorAll('.device-btn').forEach(btn => btn.classList.remove('selected'));
+                document.getElementById('players-section').style.display = 'none';
+                document.getElementById('players-grid').innerHTML = '';
+                
+                // Clear countdown timer
+                if (window.countdownInterval) {
+                    clearInterval(window.countdownInterval);
+                    window.countdownInterval = null;
+                }
+                
+                // Navigate back to step 1
+                goToStep(1);
+            })
+            .catch(err => {
+                console.error('Error logging out:', err);
+                goToStep(1);
+            });
+        }
+    </script>
+</body>
+</html>

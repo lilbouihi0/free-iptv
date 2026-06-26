@@ -1,0 +1,7 @@
+# Local configuration files containing secrets
+api/config.php
+
+# Operating system files
+.DS_Store
+Thumbs.db
+Desktop.ini

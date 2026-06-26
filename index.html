@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IPTV Premium - XC_VM Streaming Dashboard</title>
+    <meta name="description" content="Experience ultra-fast, premium IPTV streaming in up to 4K quality. Manage your subscription details and get live server status updates directly through our client portal.">
+    
+    <!-- Tabler Icons CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@tabler/icons-webfont@latest/tabler-icons.min.css">
+    
+    <!-- Custom Style Sheet -->
+    <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+    <!-- Neon Glow Background Elements -->
+    <div class="bg-glow-1"></div>
+    <div class="bg-glow-2"></div>
+
+    <!-- Navigation Header -->
+    <header id="main-header">
+        <div class="nav-container">
+            <a href="#" class="logo" id="logo-link">
+                <i class="ti ti-device-tv-old"></i>
+                <span>XC IPTV</span>
+            </a>
+            
+            <nav>
+                <ul class="nav-links">
+                    <li class="marketing-nav-link"><a href="#home" id="nav-home">Home</a></li>
+                    <li class="marketing-nav-link"><a href="#features" id="nav-features">Features</a></li>
+                    <li class="marketing-nav-link"><a href="#pricing" id="nav-pricing">Pricing</a></li>
+                    <li class="portal-nav-link" id="portal-nav-link" style="display: none;"><a href="#portal" id="nav-portal">My Portal</a></li>
+                </ul>
+            </nav>
+            
+            <!-- Auth Buttons and User Badge -->
+            <div class="nav-buttons">
+                <div class="auth-group" id="header-auth-buttons">
+                    <button class="btn btn-text" onclick="openModal('login')" id="btn-header-login">Sign in</button>
+                    <button class="btn btn-primary" onclick="openModal('trial')" id="btn-header-trial">Get Free Trial</button>
+                </div>
+                
+                <div class="user-badge" id="header-user-badge" style="display: none; align-items: center; gap: 12px;">
+                    <div class="profile-avatar" id="header-avatar-initial">U</div>
+                    <span id="header-user-username" style="font-weight: 600; font-size: 0.95rem;">Username</span>
+                    <button class="btn btn-outline" style="padding: 6px 12px; font-size: 0.8rem;" onclick="doLogout()" id="btn-header-logout">
+                        <i class="ti ti-logout"></i> Sign Out
+                    </button>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ================= MARKETING VIEW ================= -->
+    <main id="marketing-view">
+        
+        <!-- Hero Section -->
+        <section class="section hero" id="home">
+            <div class="hero-content">
+                <div class="hero-tag">
+                    <span class="live-dot"></span> LIVE SPORTS IN 4K
+                </div>
+                <h1>Stream the World's<br>Best Sports <span>LIVE in 4K</span></h1>
+                
+                <!-- League Logos Bar -->
+                <div class="league-bar">
+                    <div class="league-item pl-brand">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M2 4l3 12h14l3-12-6 7-4-7-4 7-6-7z"/><path d="M3 20h18a1 1 0 0 0 1-1v-1a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v1a1 1 0 0 0 1 1z"/></svg>
+                        <span>PREMIER LEAGUE</span>
+                    </div>
+                    <div class="league-item cl-brand">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="12" cy="12" r="10" stroke-dasharray="2,2"/><path d="M12 2l1.5 3.5L17 6l-3 2.5L15 12l-3-2-3 2 1-3.5-3-2.5 3.5-.5z" fill="currentColor"/><path d="M6 8l1 2 2 .5-1.5 1 1 2-2.5-1-2.5 1 .5-2-1.5-1 2-.5z" fill="currentColor"/><path d="M18 8l1 2 2 .5-1.5 1 1 2-2.5-1-2.5 1 .5-2-1.5-1 2-.5z" fill="currentColor"/></svg>
+                        <span>CHAMPIONS LEAGUE</span>
+                    </div>
+                    <div class="league-item wc-brand">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M6 9H4.5a2.5 2.5 0 0 1 0-5H6"/><path d="M18 9h1.5a2.5 2.5 0 0 0 0-5H18"/><path d="M4 22h16"/><path d="M10 14.66V17c0 .55-.45 1-1 1H4v2h16v-2h-5c-.55 0-1-.45-1-1v-2.34"/><path d="M12 2a5 5 0 0 0-5 5v3c0 2.5 2 4.5 5 4.5s5-2 5-4.5V7a5 5 0 0 0-5-5z"/></svg>
+                        <span>WORLD CUP</span>
+                    </div>
+                    <div class="league-item ll-brand">
+                        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10" stroke-dasharray="4, 2"/><circle cx="12" cy="12" r="4" fill="currentColor"/></svg>
+                        <span>LA LIGA</span>
+                    </div>
+                </div>
+
+                <p>All Leagues. All Matches. No Blackouts. Watch all the goals, the passion, and the action live on any device with unmatched 4K streaming quality.</p>
+                
+                <div class="hero-actions">
+                    <button class="btn btn-glow" onclick="openModal('trial')" id="btn-hero-started">
+                        <span>GET STARTED NOW</span>
+                    </button>
+                </div>
+                <div class="hero-subtext">Try it Free • No Credit Card Required</div>
+            </div>
+        </section>
+
+        <!-- Features Section -->
+        <section class="section" id="features">
+            <div class="section-header">
+                <h2>Why Choose XC IPTV?</h2>
+                <p>We combine premium servers with robust software to deliver a flawless, high-speed streaming service.</p>
+            </div>
+            
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ti ti-device-tv-old"></i></div>
+                    <h3>4K & Ultra HD Streams</h3>
+                    <p>Experience stunning resolution with minimal compression. Our streams dynamically adapt to your connection speed.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ti ti-devices"></i></div>
+                    <h3>Multi-Device Compatibility</h3>
+                    <p>Compatible with Smart TVs, Android boxes, Firestick, Apple TV, iOS, Android devices, and Mag Boxes.</p>
+                </div>
+                
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="ti ti-shield-lock"></i></div>
+                    <h3>Enterprise Anti-Buffer</h3>
+                    <p>Powered by load-balanced XC_VM clusters, preventing buffering even during peak live sport broadcasts.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Pricing Section -->
+        <section class="section" id="pricing">
+            <div class="section-header">
+                <h2>Simple, Transparent Pricing</h2>
+                <p>Pick a plan that fits your viewing needs. No hidden contracts, cancel anytime.</p>
+            </div>
+            
+            <div class="pricing-grid">
+                <!-- 1 Month Card -->
+                <div class="price-card" id="pricing-1month">
+                    <div class="price-header">
+                        <div class="price-name">Premium Starter</div>
+                        <div class="price-value">
+                            <span class="price-currency">$</span>10<span class="price-period">/ month</span>
+                        </div>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="ti ti-circle-check"></i> 1 Connection Line</li>
+                        <li><i class="ti ti-circle-check"></i> 21k+ TV Channels</li>
+                        <li><i class="ti ti-circle-check"></i> 86k+ Movie VODs</li>
+                        <li><i class="ti ti-circle-check"></i> 4K / Ultra HD Streams</li>
+                        <li><i class="ti ti-circle-check"></i> 24/7 Priority Support</li>
+                    </ul>
+                    <button class="btn btn-outline price-btn" onclick="selectPackage('1month')" id="btn-pricing-1month">Order Now</button>
+                </div>
+                
+                <!-- 3 Month Card -->
+                <div class="price-card featured" id="pricing-3month">
+                    <div class="price-badge">BEST VALUE</div>
+                    <div class="price-header">
+                        <div class="price-name">Premium Plus</div>
+                        <div class="price-value">
+                            <span class="price-currency">$</span>25<span class="price-period">/ 3 months</span>
+                        </div>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="ti ti-circle-check"></i> 2 Connection Lines</li>
+                        <li><i class="ti ti-circle-check"></i> 21k+ TV Channels</li>
+                        <li><i class="ti ti-circle-check"></i> 86k+ Movie VODs</li>
+                        <li><i class="ti ti-circle-check"></i> 4K / Ultra HD Streams</li>
+                        <li><i class="ti ti-circle-check"></i> 24/7 Priority Support</li>
+                    </ul>
+                    <button class="btn btn-primary price-btn" onclick="selectPackage('3month')" id="btn-pricing-3month">Order Now</button>
+                </div>
+                
+                <!-- 12 Month Card -->
+                <div class="price-card" id="pricing-12month">
+                    <div class="price-header">
+                        <div class="price-name">Premium Ultra</div>
+                        <div class="price-value">
+                            <span class="price-currency">$</span>80<span class="price-period">/ 12 months</span>
+                        </div>
+                    </div>
+                    <ul class="price-features">
+                        <li><i class="ti ti-circle-check"></i> 5 Connection Lines</li>
+                        <li><i class="ti ti-circle-check"></i> 21k+ TV Channels</li>
+                        <li><i class="ti ti-circle-check"></i> 86k+ Movie VODs</li>
+                        <li><i class="ti ti-circle-check"></i> 4K / Ultra HD Streams</li>
+                        <li><i class="ti ti-circle-check"></i> 24/7 Priority Support</li>
+                    </ul>
+                    <button class="btn btn-outline price-btn" onclick="selectPackage('12month')" id="btn-pricing-12month">Order Now</button>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <!-- ================= CLIENT PORTAL / DASHBOARD VIEW ================= -->
+    <main id="portal-view" class="portal-container" style="display: none;">
+        
+        <!-- Sidebar Navigation -->
+        <aside class="portal-sidebar">
+            <div class="sidebar-profile">
+                <div class="profile-avatar" id="dashboard-avatar-initial">U</div>
+                <div class="profile-info">
+                    <h4 id="portal-username">Member Dashboard</h4>
+                    <p><i class="ti ti-circle-filled" style="font-size: 0.6rem;"></i> Connected</p>
+                </div>
+            </div>
+            
+            <ul class="sidebar-menu">
+                <li class="sidebar-item active" id="sidebar-dashboard">
+                    <i class="ti ti-dashboard"></i> Overview
+                </li>
+                <li class="sidebar-item" onclick="alert('Manage playlist files, EPG guide lines, and playlist downloads.')" id="sidebar-channels">
+                    <i class="ti ti-list"></i> Channels List
+                </li>
+                <li class="sidebar-item" onclick="doLogout()" id="sidebar-logout" style="border-top: 1px solid var(--border); margin-top: 20px; padding-top: 20px;">
+                    <i class="ti ti-logout"></i> Sign out
+                </li>
+            </ul>
+        </aside>
+        
+        <!-- Portal Core Dashboard Contents -->
+        <section class="portal-content" id="portal">
+            <div class="portal-header">
+                <h2>Account Overview</h2>
+                <div class="live-badge">
+                    <span class="live-dot"></span> LIVE backend sync
+                </div>
+            </div>
+            
+            <!-- Cards Grid -->
+            <div class="portal-grid">
+                <div class="portal-card">
+                    <div class="portal-card-header">
+                        <span class="portal-card-title">Active Package</span>
+                        <div class="portal-card-icon"><i class="ti ti-package"></i></div>
+                    </div>
+                    <div class="portal-card-value" id="dashboard-package">TRIAL</div>
+                    <div class="portal-card-meta">Access Type</div>
+                </div>
+                
+                <div class="portal-card">
+                    <div class="portal-card-header">
+                        <span class="portal-card-title">Expiring Date</span>
+                        <div class="portal-card-icon"><i class="ti ti-calendar"></i></div>
+                    </div>
+                    <div class="portal-card-value" id="dashboard-expiry">2026-06-24</div>
+                    <div class="portal-card-meta">UTC Server Time</div>
+                </div>
+            </div>
+            
+            <!-- Playlist Credentials Box -->
+            <div class="credentials-box">
+                <h3><i class="ti ti-link"></i> Your IPTV M3U Playlist Link</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 20px;">
+                    Copy this link and paste it into your preferred IPTV Player app (e.g., VLC, Tivimate, GSE Smart IPTV). Do not share this URL with anyone.
+                </p>
+                <div class="input-copy-group" style="margin-bottom: 20px;">
+                    <input type="text" id="dashboard-playlist-url" readonly value="http://178.18.248.202:80/playlist/username/password/m3u_plus">
+                    <button class="btn btn-primary" onclick="copyPlaylistUrl()" id="playlist-copy-btn">
+                        <i class="ti ti-copy"></i> Copy URL
+                    </button>
+                </div>
+
+                <h3 style="border-top: 1px solid var(--border); padding-top: 20px; margin-top: 20px;"><i class="ti ti-settings"></i> Xtream Codes API Login details</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 16px;">
+                    For apps that require Xtream API login details (e.g., Smarters, XCIPTV, Tivimate).
+                </p>
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 16px;">
+                    <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--border); padding: 12px; border-radius: 8px;">
+                        <span style="font-size: 0.75rem; color: var(--text-dim); display: block; margin-bottom: 4px; font-weight: 600;">SERVER HOST URL</span>
+                        <span id="dashboard-xtream-host" style="font-family: monospace; font-size: 0.85rem; word-break: break-all;">http://178.18.248.202:80</span>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--border); padding: 12px; border-radius: 8px;">
+                        <span style="font-size: 0.75rem; color: var(--text-dim); display: block; margin-bottom: 4px; font-weight: 600;">USERNAME</span>
+                        <span id="dashboard-xtream-user" style="font-family: monospace; font-size: 0.85rem; word-break: break-all;">username</span>
+                    </div>
+                    <div style="background: rgba(0,0,0,0.2); border: 1px solid var(--border); padding: 12px; border-radius: 8px;">
+                        <span style="font-size: 0.75rem; color: var(--text-dim); display: block; margin-bottom: 4px; font-weight: 600;">PASSWORD</span>
+                        <span id="dashboard-xtream-pass" style="font-family: monospace; font-size: 0.85rem; word-break: break-all;">••••••</span>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Live Server Health status Section (Powered by XC_VM API) -->
+            <div class="credentials-box">
+                <h3 style="margin-bottom: 8px;"><i class="ti ti-activity" style="color: var(--accent-emerald);"></i> XC_VM Backend Server Status</h3>
+                <p style="color: var(--text-muted); font-size: 0.9rem; margin-bottom: 24px;">
+                    Real-time monitoring statistics queried directly from the XC_VM panel API backend.
+                </p>
+                
+                <div class="status-grid">
+                    <!-- CPU -->
+                    <div class="status-card">
+                        <div class="status-card-header">
+                            <span class="status-name">CPU LOAD</span>
+                            <i class="ti ti-cpu" style="color: var(--primary);"></i>
+                        </div>
+                        <div class="status-val" id="status-cpu-val">0%</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="status-cpu-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Memory -->
+                    <div class="status-card">
+                        <div class="status-card-header">
+                            <span class="status-name">RAM USAGE</span>
+                            <i class="ti ti-microchip" style="color: var(--accent-cyan);"></i>
+                        </div>
+                        <div class="status-val" id="status-ram-val">0%</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="status-ram-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Disk Space -->
+                    <div class="status-card">
+                        <div class="status-card-header">
+                            <span class="status-name">DISK PERCENT</span>
+                            <i class="ti ti-database" style="color: var(--accent-emerald);"></i>
+                        </div>
+                        <div class="status-val" id="status-disk-val">0%</div>
+                        <div class="progress-bar-container">
+                            <div class="progress-bar" id="status-disk-bar" style="width: 0%;"></div>
+                        </div>
+                    </div>
+                    
+                    <!-- Uptime -->
+                    <div class="status-card">
+                        <div class="status-card-header">
+                            <span class="status-name">UPTIME</span>
+                            <i class="ti ti-clock" style="color: var(--accent-rose);"></i>
+                        </div>
+                        <div class="status-val" id="status-uptime-val" style="font-size: 1rem; line-height: 1.8;">Offline</div>
+                    </div>
+                </div>
+            </div>
+            
+        </section>
+        
+    </main>
+
+    <!-- ================= MODALS ================= -->
+    
+    <!-- Free Trial Modal -->
+    <div class="modal-overlay" id="modal-trial">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('trial')">&times;</button>
+            <div class="modal-header">
+                <h3>Get a Free Trial</h3>
+                <p>Experience the service for 24 hours. No payment details required.</p>
+            </div>
+            <form id="form-trial" onsubmit="event.preventDefault(); activateTrial();">
+                <div class="form-group">
+                    <label class="form-label">CHOOSE USERNAME</label>
+                    <input type="text" name="username" class="form-control" placeholder="e.g. streamingguy" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">EMAIL ADDRESS</label>
+                    <input type="email" name="email" class="form-control" placeholder="e.g. user@domain.com" required autocomplete="email">
+                </div>
+                <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="activateTrial()" id="btn-submit-trial">
+                    Activate Trial
+                </button>
+            </form>
+            <div class="form-footer">
+                Already have an account? <a href="#" onclick="closeModal('trial'); openModal('login');">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Registration / Purchase Modal -->
+    <div class="modal-overlay" id="modal-register">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('register')">&times;</button>
+            <div class="modal-header">
+                <h3>Register Your Subscription</h3>
+                <p id="register-package-title">Premium 1 Month Plan</p>
+            </div>
+            <form id="form-register" onsubmit="event.preventDefault(); doRegister();">
+                <input type="hidden" name="package" value="1month">
+                <div class="form-group">
+                    <label class="form-label">DESIRED USERNAME</label>
+                    <input type="text" name="username" class="form-control" placeholder="e.g. streamsports" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">EMAIL ADDRESS</label>
+                    <input type="email" name="email" class="form-control" placeholder="your@email.com" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">PASSWORD</label>
+                    <input type="password" name="password" class="form-control" placeholder="Enter secure password" required autocomplete="new-password">
+                </div>
+                <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="doRegister()" id="btn-submit-register">
+                    Register & Checkout
+                </button>
+            </form>
+            <div class="form-footer">
+                Already registered? <a href="#" onclick="closeModal('register'); openModal('login');">Sign In</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Sign In Modal -->
+    <div class="modal-overlay" id="modal-login">
+        <div class="modal-card">
+            <button class="modal-close" onclick="closeModal('login')">&times;</button>
+            <div class="modal-header">
+                <h3>Welcome Back</h3>
+                <p>Enter your credentials to manage your subscription.</p>
+            </div>
+            <form id="form-login" onsubmit="event.preventDefault(); doLogin();">
+                <div class="form-group">
+                    <label class="form-label">USERNAME</label>
+                    <input type="text" name="username" class="form-control" placeholder="Your account username" required autocomplete="username">
+                </div>
+                <div class="form-group">
+                    <label class="form-label">PASSWORD</label>
+                    <input type="password" name="password" class="form-control" placeholder="Your account password" required autocomplete="current-password">
+                </div>
+                <button type="button" class="btn btn-primary" style="width: 100%; margin-top: 10px;" onclick="doLogin()" id="btn-submit-login">
+                    Log In
+                </button>
+            </form>
+            <div class="form-footer">
+                Don't have an account? <a href="#" onclick="closeModal('login'); openModal('trial');">Get Trial</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Page Footer -->
+    <footer>
+        <div class="footer-content">
+            <a href="#" class="logo">
+                <i class="ti ti-device-tv-old"></i>
+                <span>XC IPTV</span>
+            </a>
+            <div class="footer-text">
+                &copy; 2026 XC IPTV. All rights reserved. Powered securely by XC_VM.
+            </div>
+        </div>
+    </footer>
+
+    <!-- Frontend Application Logic Script -->
+    <script src="assets/js/app.js"></script>
+</body>
+</html>
