@@ -268,7 +268,7 @@ function checkTrialEligibility($phone, $ip) {
     $db = getDbConnection();
     if ($db) {
         try {
-            $stmt = $db->prepare("INSERT INTO ip_activity (ip_address, action) VALUES (?, 'trial_request')");
+            $stmt = $db->prepare("INSERT INTO ip_activity (ip_address, action) VALUES (?, ?)");
             $action = 'trial_request';
             $stmt->bind_param("ss", $ip, $action);
             $stmt->execute();
@@ -283,31 +283,8 @@ function checkTrialEligibility($phone, $ip) {
         return ['eligible' => true, 'reason' => ''];
     }
     
-    try {
-        // Try calling the stored procedure
-        $eligible = 1;
-        $reason = '';
-        $stmt = $db->prepare("CALL can_user_take_trial(?, ?, @eligible, @reason)");
-        if ($stmt) {
-            $stmt->bind_param("ss", $cleanPhone, $ip);
-            $stmt->execute();
-            $stmt->close();
-            
-            // Get output parameters
-            $result = $db->query("SELECT @eligible AS eligible, @reason AS reason");
-            if ($result) {
-                $row = $result->fetch_assoc();
-                $eligible = $row['eligible'];
-                $reason = $row['reason'];
-                $result->free();
-            }
-            $db->close();
-            return ['eligible' => ($eligible == 1), 'reason' => $reason];
-        }
-    } catch (Exception $e) {
-        error_log("CALL can_user_take_trial failed, falling back to SQL: " . $e->getMessage());
-    }
-    
+    // Bypass stored procedure call to avoid connection out-of-sync/prepared statement errors.
+    // Execute the direct SQL checks directly.
     // Graceful SQL Fallback
     try {
         // 1. Phone blacklist check
@@ -416,39 +393,14 @@ function activateUserTrial($userId, $username, $email) {
     $db = getDbConnection();
     if ($db) {
         try {
-            $success = 0;
-            // Try calling the stored procedure `activate_trial`
-            $stmt = $db->prepare("CALL activate_trial(?, @success)");
-            if ($stmt) {
-                $stmt->bind_param("i", $userId);
-                $stmt->execute();
-                $stmt->close();
-                
-                $res = $db->query("SELECT @success AS success");
-                if ($res) {
-                    $row = $res->fetch_assoc();
-                    $success = $row['success'];
-                    $res->free();
-                }
-            }
+            // Bypass stored procedure call to avoid connection out-of-sync/prepared statement errors.
+            // Executing the native SQL queries directly:
+            $db->query("UPDATE users SET trial_used = 1, trial_activated_at = NOW(), trial_expiry = DATE(DATE_ADD(NOW(), INTERVAL 1 DAY)), trial_status = 'active', package = 'trial', expiry = DATE(DATE_ADD(NOW(), INTERVAL 1 DAY)) WHERE id = $userId");
             
-            // If stored procedure succeeded, or fallback is needed
-            if ($success == 1) {
-                // Update trials table with the actual credentials
-                // The stored procedure inserted a trial row but without credentials, so we update the latest one.
-                $stmt = $db->prepare("UPDATE trials SET xtream_username = ?, xtream_password = ?, xtream_server_url = ?, playlist_url = ? WHERE user_id = ? AND status = 'active' ORDER BY activated_at DESC LIMIT 1");
-                $stmt->bind_param("ssssi", $username, $password, $serverUrl, $playlistUrl, $userId);
-                $stmt->execute();
-                $stmt->close();
-            } else {
-                // Fallback direct SQL update/insert
-                $db->query("UPDATE users SET trial_used = 1, trial_activated_at = NOW(), trial_expiry = DATE(DATE_ADD(NOW(), INTERVAL 1 DAY)), trial_status = 'active', package = 'trial', expiry = DATE(DATE_ADD(NOW(), INTERVAL 1 DAY)) WHERE id = $userId");
-                
-                $stmt = $db->prepare("INSERT INTO trials (user_id, xtream_username, xtream_password, xtream_server_url, playlist_url, activated_at, expires_at, status) VALUES (?, ?, ?, ?, ?, NOW(), DATE_ADD(NOW(), INTERVAL 1 DAY), 'active')");
-                $stmt->bind_param("issss", $userId, $username, $password, $serverUrl, $playlistUrl);
-                $stmt->execute();
-                $stmt->close();
-            }
+            $stmt = $db->prepare("INSERT INTO trials (user_id, xtream_username, xtream_password, xtream_server_url, playlist_url, activated_at, expires_at, status) VALUES (?, ?, ?, ?, ?, NOW(), DATE_ADD(NOW(), INTERVAL 1 DAY), 'active')");
+            $stmt->bind_param("issss", $userId, $username, $password, $serverUrl, $playlistUrl);
+            $stmt->execute();
+            $stmt->close();
             
             // Log activity
             $logMsg = $isDemo ? 'Trial activated (DEMO Mode)' : 'Trial activated successfully';
@@ -544,4 +496,23 @@ function getUserDashboardData($username) {
         return null;
     }
 }
+
+if (!function_exists('generatePassword')) {
+    /**
+     * Generate a cryptographically secure random password
+     */
+    function generatePassword($length = 12) {
+        $chars = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789';
+        $password = '';
+        for ($i = 0; $i < $length; $i++) {
+            try {
+                $password .= $chars[random_int(0, strlen($chars) - 1)];
+            } catch (Exception $e) {
+                $password .= $chars[rand(0, strlen($chars) - 1)];
+            }
+        }
+        return $password;
+    }
+}
 ?>
+
