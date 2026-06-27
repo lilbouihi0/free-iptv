@@ -4,7 +4,7 @@
  */
 
 // Base API URL
-const API_URL = 'http://178.18.248.202/api/ajax.php';
+const API_URL = '/api/ajax.php';
 
 // Active session state
 let currentUser = null;
@@ -285,7 +285,7 @@ async function doLogout() {
  */
 async function fetchSystemStatus() {
     try {
-        const response = await fetch('http://178.18.248.202/api/ajax.php?action=status');
+        const response = await fetch('/api/ajax.php?action=status');
         const result = await response.json();
         
         if (result.success && result.data) {
@@ -387,7 +387,7 @@ function copyPlaylistUrl() {
  */
 async function checkLoginStatus() {
     try {
-        const response = await fetch('http://178.18.248.202/api/check_session.php');
+        const response = await fetch('/api/check_session.php');
         const data = await response.json();
         
         if (data.logged_in) {
